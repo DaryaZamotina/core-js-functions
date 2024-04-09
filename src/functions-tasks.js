@@ -32,8 +32,10 @@ function getCurrentFunctionName() {
  *   getFunctionBody(hiHello) => "function hiHello() { console.log('hello world'); }"
  *
  */
-function getFunctionBody(/* func */) {
-  throw new Error('Not implemented');
+function getFunctionBody(func) {
+  if (typeof func === 'undefined') return '';
+  const args = func;
+  return args.toString();
 }
 
 /**
@@ -169,6 +171,14 @@ function logger(/* func, logFunc */) {
  *   partialUsingArguments(fn, 'a','b','c','d')() => 'abcd'
  */
 function partialUsingArguments(/* fn, ...args1 */) {
+  /* return function curried(...args) {
+    if (args.length >= args1.length) {
+
+    }
+    return function(...args2) {
+      return curried.apply(this, args.concate(args2));
+    }
+  }; */
   throw new Error('Not implemented');
 }
 
