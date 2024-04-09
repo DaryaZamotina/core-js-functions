@@ -98,7 +98,19 @@ function getPowerFunction(exponent) {
  *   getPolynom()      => null
  */
 function getPolynom() {
-  throw new Error('Not implemented');
+  return (...args) => {
+    let y = 0;
+    let x;
+
+    if (args.length === 0) {
+      return null;
+    }
+
+    for (let i = 0; i < args.length; i += 1) {
+      y += args[i] * x ** (args.length - 1 - i);
+    }
+    return y;
+  };
 }
 
 /**
@@ -115,8 +127,16 @@ function getPolynom() {
  *   ...
  *   memoizer() => the same random number  (next run, returns the previous cached result)
  */
-function memoize(/* func */) {
-  throw new Error('Not implemented');
+function memoize(func) {
+  const cache = {};
+  return (...args) => {
+    const key = JSON.stringify(args);
+    if (!(key in cache)) {
+      const res = func(null, args);
+      cache[key] = res;
+    }
+    return cache;
+  };
 }
 
 /**
